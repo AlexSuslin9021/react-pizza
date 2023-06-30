@@ -1,0 +1,35 @@
+.header {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+display: flex;
+    justify-content: center;
+    img{
+      margin-right:10px;
+    }
+    align-items: center;
+    h4,p{
+      margin: 0;
+    }
+  }
+
+  .cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    background: #FE5F1E;
+    border-radius:30px ;
+    a{
+      text-decoration: none;
+      color: white;
+    }
+    img{
+      margin-left: 10px;
+    }
+  }
+}
