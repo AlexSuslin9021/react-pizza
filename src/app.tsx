@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './app.module.scss';
+import {Menu} from "./Menu/menu";
 
 function App() {
     return (
-        <div className={s.app}>
-            <div className={s.container}>
-
+        <div >
+            <div>
+                <Menu/>
             </div>
         </div>
     );

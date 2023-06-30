@@ -1,0 +1,52 @@
+//.menuContainer {
+  .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 280px;
+    height: 459px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    .price{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .pizzaSelection{
+   display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      border:1px solid black;
+      width: 280px;
+      height: 85px;
+      background-color: #f3f3f3;
+      .selectionText{
+        display: flex;
+        justify-content: space-around;
+        button{
+          width: 131px;
+          height: 32px;
+        }
+      }
+      .selectionRadius{
+        display: flex;
+        justify-content: space-around;
+
+        button{
+          width: 86px;
+          height: 32px;
+        }
+      }
+      .radius{
+      display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    }
+
+  }
+
+//}

@@ -1,11 +1,10 @@
 import React from 'react';
 
-const Menu = () => {
+export const SortPizza = () => {
     return (
-        <div>
+        <div >
 
         </div>
     );
 };
 
-export default Menu;
