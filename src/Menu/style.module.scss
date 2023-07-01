@@ -27,6 +27,10 @@
         background-color: white;
         border: 1px solid #fe5f1e;
         color:#fe5f1e;
+        &:hover{
+          background-color:#fe5f1e ;
+          color:white;
+        }
       }
     }
     .pizzaSelection{
