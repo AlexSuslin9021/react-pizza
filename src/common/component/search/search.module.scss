@@ -1,0 +1,27 @@
+.search{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+
+.filter{
+padding-left: 15px;
+  button{
+    margin-right: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #f9f9f9;
+    //color:#fe5f1e
+    //color:#ffdf8c;
+    //#f9f9f9
+    //#f7f7f7
+    &:hover{
+      background-color: lightgrey;
+      color:white;
+  }
+     }
+}
+  .sort{
+    padding-right: 70px;
+  }
+}
