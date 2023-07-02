@@ -11,7 +11,7 @@ export const Cart = () => {
             </div>
 
             <ItemCart/>
-            <ItemCart/>
+          
 
 
         </div>
