@@ -1,0 +1,17 @@
+.cartContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  .itemCart{
+    .count{
+      button{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border:1px solid #fe5f1e;
+      }
+    }
+  }
+}
