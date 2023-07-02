@@ -4,13 +4,13 @@ import {ItemCart} from "./component/ItemCart";
 
 export const Cart = () => {
     return (
-        <section className={s.cartContainer}>
-            <div >
+        <div className={s.cartContainer}>
+            <div className={s.headerCart} >
                 <h3>Корзина</h3>
                 <span> Очистить корзину</span>
             </div>
             <ItemCart/>
-        </section>
+        </div>
     );
 };
 
