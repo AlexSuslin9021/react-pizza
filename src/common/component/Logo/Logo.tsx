@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "../header.module.scss";
+import s from './logo.module.scss'
 
 
 const Logo:React.FC<LogoType> = ({src,header,description, width,height}) => {

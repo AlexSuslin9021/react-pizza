@@ -4,21 +4,6 @@
   display: flex;
   justify-content: space-between;
 
-  .logo {
-    display: flex;
-    justify-content: center;
-    padding-left: 20px;
-
-    img {
-      margin-right: 10px;
-    }
-
-    align-items: center;
-
-    h4, p {
-      margin: 0;
-    }
-  }
 
   .cart {
     display: flex;

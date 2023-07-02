@@ -22,9 +22,32 @@
   }
   .itemCart{
     display: flex;
+    justify-content: space-between;
     width: 60%;
+    border-top: 1px solid lightgrey;
+    margin-bottom: 20px;
+
+    .delete{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 200px;
+      margin: 60px 0;
+      span{
+        font-weight: bold;
+      }
+      button{
+        border-radius: 50%;
+        border: 1px solid #fe5f1e;
+        background: white ;
+      }
+
+    }
     .count{
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 60px;
       button{
         width: 20px;
         height: 20px;

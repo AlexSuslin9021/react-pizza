@@ -9,7 +9,11 @@ export const Cart = () => {
                 <h3>Корзина</h3>
                 <span> Очистить корзину</span>
             </div>
+
             <ItemCart/>
+            <ItemCart/>
+
+
         </div>
     );
 };
