@@ -14,7 +14,7 @@ const SortPizza = () => {
     return (
         <div className={s.sort}>
             <span>Сортировать по: <span onClick={onClickHandler} className={s.changeSort}>{category}</span></span>
-            {open && <Modal callback={onClickChangeSort}/>}
+            {open && <Modal category={category} callback={onClickChangeSort}/>}
         </div>
     );
 };

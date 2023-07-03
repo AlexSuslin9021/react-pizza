@@ -41,9 +41,11 @@
       .changeSort {
         color: #fe5f1e;
         border-bottom: 1px dashed #fe5f1e ;
+        z-index: 2;
         &:hover{
           color: lightgrey;
         }
+
       }
     }
 

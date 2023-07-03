@@ -1,13 +1,13 @@
 import React from 'react';
 import s from'./modal.module.scss'
-export const Modal: React.FC<ModalType> = ({callback}) => {
+export const Modal: React.FC<ModalType> = ({callback, category}) => {
 
     return (
         <div className={s.modalContainer}>
             <div className={s.modal}>
-                <span onClick={()=>callback('популярности')}>по популярности</span>
-                <span onClick={()=>callback('цене')} >по цене</span>
-                <span onClick={()=>callback('алфавиту')} >по алфавиту</span>
+                <span className={category==='популярности' ? s.active :''}  onClick={()=>callback('популярности')}>по популярности</span>
+                <span className={category==='цене' ? s.active :''} onClick={()=>callback('цене')} >по цене</span>
+                <span className={category==='алфавиту' ? s.active :''} onClick={()=>callback('алфавиту')} >по алфавиту</span>
             </div>
         </div>
     );
@@ -15,4 +15,5 @@ export const Modal: React.FC<ModalType> = ({callback}) => {
 
 type ModalType={
     callback:(value:string)=>void
+    category:string
 }
