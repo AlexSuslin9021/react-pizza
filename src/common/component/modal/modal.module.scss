@@ -1,0 +1,36 @@
+
+.modalContainer {
+  position: absolute;
+  .modal {
+    width: 155px;
+    height: 156px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid black;
+    position: relative;
+    background: white;
+    left: 100px;
+    top:20px;
+
+
+
+    span {
+    width: 140px;
+      list-style-type: none;
+      padding-left: 15px;
+
+
+
+
+      &:hover {
+        //width: 140px;
+        background-color: rgba(241, 206, 196, 0.4);
+        color: #fe5f1e;
+        font-weight: bold;
+      }
+    }
+
+  }
+}
