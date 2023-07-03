@@ -10,7 +10,7 @@ export const Item:React.FC<ItemProps> = ({id, imageUrl,price,title, types,sizes,
             <div className={s.item}>
             <div><img style={{width:'250px', height:'250px'}} src={imageUrl} alt="#"/></div>
             <div>{title}</div>
-                <OptionPizza sizes={sizes}/>
+                <OptionPizza sizes={sizes} types={types}/>
                 <PriceAndAdd price={price} name={'+ Добавить'}/>
             </div>
 

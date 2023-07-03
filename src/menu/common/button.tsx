@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Button:React.FC<ButtonType> = ({name}) => {
     return (
-        <button>
+        <button  >
             {name}
             </button>
     );

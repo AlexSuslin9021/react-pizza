@@ -15,67 +15,84 @@
     //border: 1px solid black;
     border-radius: 10px;
 
-    .price{
+    .price {
       width: 100%;
       display: flex;
       justify-content: space-between;
-      span{
+
+      span {
         font-weight: bold;
       }
-      button{
+
+      button {
         border-radius: 10px;
         background-color: white;
         border: 1px solid #fe5f1e;
-        color:#fe5f1e;
-        &:hover{
-          background-color:#fe5f1e ;
-          color:white;
+        color: #fe5f1e;
+
+        &:hover {
+          background-color: #fe5f1e;
+          color: white;
         }
       }
     }
-    .pizzaSelection{
-   display: flex;
+
+    .pizzaSelection {
+      display: flex;
       flex-direction: column;
       justify-content: space-around;
-     border-radius: 10px;
+      border-radius: 10px;
       width: 280px;
       height: 85px;
       background-color: #f3f3f3;
-      .selectionText{
+
+      .selectionText {
         display: flex;
         justify-content: space-around;
-        button{
+
+        .active {
+          background-color: #f9f9f9;
+        }
+
+        button {
           width: 131px;
           height: 32px;
-          border:none;
-          background-color:#f3f3f3;
+          border: none;
+          background-color: #f3f3f3;
           border-radius: 5px;
+
           &:hover{
-            background-color: #f9f9f9;
+           cursor: pointer;
           }
+
         }
       }
-      .selectionRadius{
+
+      .selectionRadius {
         display: flex;
         justify-content: space-around;
 
-
-        button{
+        .active {
+          background-color: #f9f9f9;
+        }
+        button {
           width: 86px;
           height: 32px;
-          border:none;
-          background-color:#f3f3f3 ;
+          border: none;
+          background-color: #f3f3f3;
           border-radius: 5px;
-          &:hover{
-            background-color: #f9f9f9;
+
+          &:hover {
+            cursor: pointer;
           }
         }
       }
-      .radius{
-      display: flex;
+
+      .radius {
+        display: flex;
         justify-content: space-between;
         align-items: center;
-    }
+      }
 
     }
 

@@ -1,16 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "../style.module.scss";
-import {Button} from "./button";
 
-const OptionPizza:React.FC<OptionPizzaType> = ({sizes}) => {
+
+const OptionPizza: React.FC<OptionPizzaType> = ({sizes, types}) => {
+    const typesPizza = ['Тонкое', 'Традиционное']
+    const [activeType, setActivetype] = useState(0)
+    const [activeSize, setActiveSize] = useState(0)
+    const onClickTypes = (index: number) => {setActivetype(index)}
+    const onClickSize = (index: number) => {setActiveSize(index)}
     return (
         <article className={s.pizzaSelection}>
             <div className={s.selectionText}>
-                <Button name={'Тонкое'}/>
-                <Button name={'Традиционное'}/>
+                {types.map((el, i) => <button
+                    key={el}
+                    onClick={() => onClickTypes(el)}
+                    className={activeType === i ? s.active : ''}
+                >{typesPizza[el]}</button>)}
             </div>
             <div className={s.selectionRadius}>
-                {sizes.map(el=>  <Button name={`${el} см`}/>)}
+                  {sizes.map((el, i) => <button
+                        key={i}
+                        onClick={() => onClickSize(i)}
+                        className={activeSize === i ? s.active : ''}
+                    >{`${el} см`}</button>)}
             </div>
         </article>
     );
@@ -18,6 +30,7 @@ const OptionPizza:React.FC<OptionPizzaType> = ({sizes}) => {
 
 export default OptionPizza;
 
-type OptionPizzaType={
-    sizes:number[]
+type OptionPizzaType = {
+    sizes: number[]
+    types: number[]
 }
