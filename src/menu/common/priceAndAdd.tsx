@@ -17,5 +17,5 @@ export const PriceAndAdd:React.FC<ButtonAddType> = ({name,callback, price}) => {
 type ButtonAddType={
     name:string
     callback?:()=>void
-    price:string
+    price:number
 }
