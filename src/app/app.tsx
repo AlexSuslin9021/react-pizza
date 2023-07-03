@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './app.module.scss';
 import { Routes, Route } from 'react-router-dom';
-import { Menu } from './menu/menu';
-import Header from './common/component/header/header';
-import { Cart } from './cart/cart';
-import {EmptyCart} from "./cart/component/EmptyCart/emptyCart";
+import { Menu } from '../menu/menu';
+import Header from '../common/component/header/header';
+import { Cart } from '../cart/cart';
+import {EmptyCart} from "../cart/component/EmptyCart/emptyCart";
 
 function App() {
     return (
