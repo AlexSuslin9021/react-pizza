@@ -4,6 +4,7 @@ import s from './style.module.scss'
 import {Search} from "../common/component/search/search";
 import {useAppSelector} from "../app/store";
 
+
 export const Menu = () => {
     const allPizza = useAppSelector(state => state.menuReducer)
     return (
@@ -22,6 +23,8 @@ export const Menu = () => {
                                  rating={el.rating}
                     />
                 })}
+
+
 
 
             </div>

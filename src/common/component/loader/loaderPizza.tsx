@@ -3,7 +3,7 @@ import ContentLoader from "react-content-loader"
 
 
 
-export const loaderPizza: React.FC<MyLoaderProps> = (props) => (
+export const LoaderPizza: React.FC<MyLoaderProps> = (props) => (
     <ContentLoader
         speed={2}
         width={500}
