@@ -10,6 +10,7 @@ export const Menu = () => {
     return (
         <>
             <Search/>
+            <div className={s.menuContainerWrapper}>
             <div className={s.menuContainer}>
                 {allPizza.map((el) => {
                     return <Item key={el.id}
@@ -23,10 +24,7 @@ export const Menu = () => {
                                  rating={el.rating}
                     />
                 })}
-
-
-
-
+            </div>
             </div>
         </>
 

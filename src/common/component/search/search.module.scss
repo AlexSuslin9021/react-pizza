@@ -2,11 +2,17 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 30px 0;
+  @media(max-width:1000px ){
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
 
   .filter {
     display: flex;
     padding-left: 15px;
+    flex-wrap: wrap;
 
     .active {
       background-color: black;

@@ -1,22 +1,23 @@
 @import 'src/common/style/variables';
 
-
-.mainBlock {
-  min-height: 100vh;
-  padding-top: 50px;
-  width: 100%;
+body {
   background: orange;
+  .mainBlock {
+margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .container {
-    /*border: 1px solid black;*/
-    max-width: 1260px;
-    min-height: 80vh;
-    padding: 0 15px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 20px;
-    padding-top: 20px;
+    .container {
+      /*border: 1px solid black;*/
+      max-width: 1260px;
+      min-height: 80vh;
+      padding: 0 15px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding-top: 20px;
 
+    }
   }
 }
-
