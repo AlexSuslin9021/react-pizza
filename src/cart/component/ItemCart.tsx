@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from "../../common/component/Logo/Logo";
+import Logo from "../../common/component/logo/Logo";
 import pizza from '../../common/image/image 7.svg'
 import s from '../style.module.scss'
 

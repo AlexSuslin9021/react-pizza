@@ -3,7 +3,7 @@ import logo from "../../image/logo/pizzaLogo.svg";
 import cart from '../../image/logo/Rectangle 4.svg'
 import line from '../../image/logo/iconfinder_shopping-cart_2561279 1.svg'
 import s from './header.module.scss'
-import Logo from "../Logo/Logo";
+import Logo from "../logo/Logo";
 
 
 const Header = () => {
