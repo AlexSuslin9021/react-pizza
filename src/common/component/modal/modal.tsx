@@ -2,9 +2,9 @@ import React from 'react';
 import s from'./modal.module.scss'
 export const Modal: React.FC<ModalType> = ({callback, category}) => {
     const list=[
-        {name:'по популярности', sortProperty:'price'},
+        {name:'по популярности', sortProperty:'rating'},
         {name:'по цене', sortProperty:'price'},
-        {name:'по алфавиту', sortProperty:'price'},
+        {name:'по алфавиту', sortProperty:'title'},
     ]
     return (
         <div className={s.modalContainer}>

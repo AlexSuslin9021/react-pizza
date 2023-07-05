@@ -4,11 +4,7 @@ import {Modal} from "../../modal/modal";
 
 const SortPizza: React.FC<SortPizzaType> = ({category, setCategory}) => {
     const [open, setOpen] = useState(false)
-    const list=[
-        {name:'по популярности', sortProperty:'price'},
-        {name:'по цене', sortProperty:'price'},
-        {name:'по алфавиту', sortProperty:'price'},
-    ]
+
     const onClickHandler = () => { setOpen(!open) }
     const onClickChangeSort = (value: any) => {
         setCategory(value)

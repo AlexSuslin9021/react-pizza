@@ -11,14 +11,14 @@ export const Menu = () => {
     const [loader, setLoader] = useState(false)
     const [activeFilter, setActiveFilter] = useState(0)
     const [allPizza, setAllPizza] = useState<PizzaType[]>([])
-    const [category, setCategory] = useState({name:'по популярности', sortProperty:'price'})
-    const filter = activeFilter === 0 ? '' : `?category=${activeFilter}`
-    const onClickFilter = (id: number) => {
-        setActiveFilter(id)
-    }
+    const [category, setCategory] = useState({name:'по популярности', sortProperty:'rating'})
+    const filter = activeFilter === 0 ? '' : `category=${activeFilter}`
+    const sort = category.sortProperty === 'rating' ? '' : `&sortBy=${category.sortProperty}&order=desc`
+    const onClickFilter = (id: number) => { setActiveFilter(id) }
+    const onClickSort = (value: any) => { setCategory(value) }
     useEffect(() => {
         setLoader(true)
-        fetch(`https://64a3b031c3b509573b56686b.mockapi.io/Items${filter}`)
+        fetch(`https://64a3b031c3b509573b56686b.mockapi.io/Items?${filter}${sort}`)
             .then((res) => {
                 return res.json()
             })
@@ -29,11 +29,11 @@ export const Menu = () => {
                 }, 2000)
             })
 
-    }, [activeFilter])
+    }, [activeFilter, category])
     return (
         <>
             <Search activeFilter={activeFilter} setActiveFilter={onClickFilter}
-                    category={category} setCategory={setCategory}
+                    category={category} setCategory={onClickSort}
             />
             <div className={s.menuContainerWrapper}>
                 <div className={s.menuContainer}>
