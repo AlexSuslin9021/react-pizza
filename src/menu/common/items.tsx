@@ -4,7 +4,7 @@ import s from '../style.module.scss'
 import {PriceAndAdd} from "./priceAndAdd";
 import OptionPizza from "./optionPizza";
 
-export const Item:React.FC<ItemProps> = ({id, imageUrl,price,title, types,sizes,category,rating}) => {
+export const  Item:React.FC<ItemProps> = ({id, imageUrl,price,title, types,sizes,category,rating}) => {
     return (
 
             <div className={s.item}>

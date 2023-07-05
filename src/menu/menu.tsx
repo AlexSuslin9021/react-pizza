@@ -9,12 +9,15 @@ import {LoaderPizza} from "../common/component/loader/loaderPizza";
 
 export const Menu = () => {
     const[loader, setLoader]=useState(false)
-    // const allPizza = useAppSelector(state => state.menuReducer)
+    const [activeFilter, setActiveFilter]=useState(0)
     const [allPizza, setAllPizza]=useState<PizzaType[]>([])
- // const dispatch = useAppDispatch()
+ const filter= activeFilter===0 ? '':`?category=${activeFilter}`
+    const onClickFilter=(id:number)=>{
+        setActiveFilter(id)
+        }
     useEffect(()=>{
         setLoader(true)
-        fetch('https://64a3b031c3b509573b56686b.mockapi.io/Items')
+        fetch(`https://64a3b031c3b509573b56686b.mockapi.io/Items${filter}`)
             .then((res)=>{return  res.json()})
             .then((arr:any)=>{
             setAllPizza(arr)
@@ -23,13 +26,13 @@ export const Menu = () => {
             },2000)
         })
 
-    },[])
+    },[activeFilter])
     return (
         <>
-            <Search/>
+            <Search activeFilter={activeFilter} setActiveFilter={onClickFilter} />
             <div className={s.menuContainerWrapper}>
             <div className={s.menuContainer}>
-                {loader ?  [...new Array(8)].map((_,i)=><LoaderPizza key={i} />):
+                {loader ?  [...new Array(allPizza.length)].map((_,i)=><LoaderPizza key={i} />):
                      allPizza.map((el) => {
                     return  <Item key={el.id}
                                  title={el.title}
