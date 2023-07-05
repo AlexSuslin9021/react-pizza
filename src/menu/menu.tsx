@@ -8,44 +8,49 @@ import {LoaderPizza} from "../common/component/loader/loaderPizza";
 
 
 export const Menu = () => {
-    const[loader, setLoader]=useState(false)
-    const [activeFilter, setActiveFilter]=useState(0)
-    const [allPizza, setAllPizza]=useState<PizzaType[]>([])
- const filter= activeFilter===0 ? '':`?category=${activeFilter}`
-    const onClickFilter=(id:number)=>{
+    const [loader, setLoader] = useState(false)
+    const [activeFilter, setActiveFilter] = useState(0)
+    const [allPizza, setAllPizza] = useState<PizzaType[]>([])
+    const [category, setCategory] = useState({name:'по популярности', sortProperty:'price'})
+    const filter = activeFilter === 0 ? '' : `?category=${activeFilter}`
+    const onClickFilter = (id: number) => {
         setActiveFilter(id)
-        }
-    useEffect(()=>{
+    }
+    useEffect(() => {
         setLoader(true)
         fetch(`https://64a3b031c3b509573b56686b.mockapi.io/Items${filter}`)
-            .then((res)=>{return  res.json()})
-            .then((arr:any)=>{
-            setAllPizza(arr)
-            setTimeout(()=>{
-                setLoader(false)
-            },2000)
-        })
+            .then((res) => {
+                return res.json()
+            })
+            .then((arr: any) => {
+                setAllPizza(arr)
+                setTimeout(() => {
+                    setLoader(false)
+                }, 2000)
+            })
 
-    },[activeFilter])
+    }, [activeFilter])
     return (
         <>
-            <Search activeFilter={activeFilter} setActiveFilter={onClickFilter} />
+            <Search activeFilter={activeFilter} setActiveFilter={onClickFilter}
+                    category={category} setCategory={setCategory}
+            />
             <div className={s.menuContainerWrapper}>
-            <div className={s.menuContainer}>
-                {loader ?  [...new Array(allPizza.length)].map((_,i)=><LoaderPizza key={i} />):
-                     allPizza.map((el) => {
-                    return  <Item key={el.id}
-                                 title={el.title}
-                                 category={el.category}
-                                 price={el.price}
-                                 sizes={el.sizes}
-                                 id={el.id}
-                                 imageUrl={el.imageUrl}
-                                 types={el.types}
-                                 rating={el.rating}
-                    />
-                })}
-            </div>
+                <div className={s.menuContainer}>
+                    {loader ? [...new Array(allPizza.length)].map((_, i) => <LoaderPizza key={i}/>) :
+                        allPizza.map((el) => {
+                            return <Item key={el.id}
+                                         title={el.title}
+                                         category={el.category}
+                                         price={el.price}
+                                         sizes={el.sizes}
+                                         id={el.id}
+                                         imageUrl={el.imageUrl}
+                                         types={el.types}
+                                         rating={el.rating}
+                            />
+                        })}
+                </div>
             </div>
         </>
 
