@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Item} from "./common/items";
 import s from './style.module.scss'
-import {Search} from "../common/component/search/search";
+import {SortFilter} from "../common/component/search/SortFilter";
 
 import {PizzaType} from "./api.menu";
 import {LoaderPizza} from "../common/component/loader/loaderPizza";
@@ -32,7 +32,7 @@ export const Menu = () => {
     }, [activeFilter, category])
     return (
         <>
-            <Search activeFilter={activeFilter} setActiveFilter={onClickFilter}
+            <SortFilter activeFilter={activeFilter} setActiveFilter={onClickFilter}
                     category={category} setCategory={onClickSort}
             />
             <div className={s.menuContainerWrapper}>

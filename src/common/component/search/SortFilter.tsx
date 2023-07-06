@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './search.module.scss'
+import s from './sortFilter.module.scss'
 import {FilterPizza} from "./component/FilterPizza";
 import SortPizza from "./component/sortPizza";
 
-export const Search:React.FC<SearchType> = ({activeFilter, setActiveFilter, category,setCategory}) => {
+export const SortFilter:React.FC<SearchType> = ({activeFilter, setActiveFilter, category,setCategory}) => {
 
     return (
         <div className={s.search}>

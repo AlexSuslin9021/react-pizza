@@ -5,6 +5,7 @@ import line from '../../image/logo/iconfinder_shopping-cart_2561279 1.svg'
 import s from './header.module.scss'
 import Logo from "../logo/Logo";
 import {NavLink, useNavigate} from "react-router-dom";
+import {Search} from "./component/Search";
 
 
 const Header = () => {
@@ -23,6 +24,7 @@ const Header = () => {
                 header={'REACT PIZZA'}
 
             />
+            <Search/>
             <div className={s.cart} onClick={onClickCart}>
 
 

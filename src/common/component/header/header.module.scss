@@ -3,11 +3,41 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  @media(max-width: 600px){
+  @media(max-width: 600px) {
     justify-content: center;
     flex-wrap: wrap;
   }
 
+  .search {
+    display: flex;
+    position: relative;
+
+    .logo {
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: 16px;
+      left: 7px;
+      opacity: 0.3;
+    }
+
+    .input {
+      width: 300px;
+      height: 40px;
+      border: 1px solid lightgrey;
+      border-radius: 20px;
+padding-left: 30px;
+    }
+
+    .close {
+      position: absolute;
+      right: 10px;
+      top: 16px;
+      opacity: 0.3;
+      width: 15px;
+      height: 15px;
+    }
+  }
 
   .cart {
     display: flex;
@@ -17,7 +47,7 @@
     height: 50px;
     background: #FE5F1E;
     border-radius: 30px;
-   margin-right: 50px;
+    margin-right: 50px;
     cursor: pointer;
 
     span {

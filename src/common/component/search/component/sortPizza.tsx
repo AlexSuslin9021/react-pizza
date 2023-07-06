@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import s from "../search.module.scss";
+import s from "../sortFilter.module.scss";
 import {Modal} from "../../modal/modal";
 
 const SortPizza: React.FC<SortPizzaType> = ({category, setCategory}) => {

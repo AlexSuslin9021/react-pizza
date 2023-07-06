@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "../search.module.scss";
+import s from "../sortFilter.module.scss";
 
 export const FilterPizza:React.FC<FilterPizza> = ({activeFilter,setActiveFilter}) => {
 
