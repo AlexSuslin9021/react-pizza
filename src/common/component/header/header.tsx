@@ -4,15 +4,13 @@ import cart from '../../image/logo/Rectangle 4.svg'
 import line from '../../image/logo/iconfinder_shopping-cart_2561279 1.svg'
 import s from './header.module.scss'
 import Logo from "../logo/Logo";
-import {NavLink, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import {Search} from "./component/Search";
 
 
-const Header = () => {
+const Header:React.FC<HeaderType> = ({searchValue,setSearchValue}) => {
     const navigate = useNavigate()
-    const onClickCart = () => {
-        navigate('/cart')
-    }
+    const onClickCart = () => { navigate('/cart') }
 
     return (
         <header className={s.header}>
@@ -22,19 +20,20 @@ const Header = () => {
                 src={logo}
                 description={'самая вкусная пицца вов вселенной'}
                 header={'REACT PIZZA'}
-
             />
-            <Search/>
+            <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className={s.cart} onClick={onClickCart}>
-
-
                     <span>price</span>
                     <img src={cart} alt="#"/>
                     <img src={line} alt="#"/>
-              
             </div>
         </header>
     );
 };
 
 export default Header;
+
+type HeaderType={
+    searchValue:string
+    setSearchValue:(value:string)=>void
+}

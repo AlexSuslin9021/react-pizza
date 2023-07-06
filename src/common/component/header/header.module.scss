@@ -21,12 +21,15 @@
       opacity: 0.3;
     }
 
-    .input {
+    input {
       width: 300px;
       height: 40px;
       border: 1px solid lightgrey;
       border-radius: 20px;
-padding-left: 30px;
+      padding-left: 30px;
+      &:focus{
+        border-color: #fe5f1e;
+      }
     }
 
     .close {
@@ -36,6 +39,7 @@ padding-left: 30px;
       opacity: 0.3;
       width: 15px;
       height: 15px;
+      cursor: pointer;
     }
   }
 
