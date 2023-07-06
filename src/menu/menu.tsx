@@ -8,6 +8,7 @@ import {Pagination} from "../common/component/Pagination/Pagination";
 
 
 export const Menu:React.FC<MenuType> = ({searchValue}) => {
+    const [isActive, setIsActive]=useState(1)
     const [loader, setLoader] = useState(false)
     const [activeFilter, setActiveFilter] = useState(0)
     const [allPizza, setAllPizza] = useState<PizzaType[]>([])
@@ -36,7 +37,7 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
     })
     useEffect(() => {
         setLoader(true)
-        fetch(`https://64a3b031c3b509573b56686b.mockapi.io/Items?${filter}${sort}`)
+        fetch(`https://64a3b031c3b509573b56686b.mockapi.io/Items?page=${isActive}&limit=4&${filter}${sort}`)
             .then((res) => {
                 return res.json()
             })
@@ -47,7 +48,7 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
                 }, 2000)
             })
 
-    }, [activeFilter, category,searchValue])
+    }, [activeFilter, category,searchValue, isActive])
     return (
         <>
             <SortFilter activeFilter={activeFilter} setActiveFilter={onClickFilter}
@@ -58,7 +59,7 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
                     {loader ? skeleton :pizza}
                 </div>
             </div>
-            <Pagination countPage={3}/>
+            <Pagination isActive={isActive} setIsActive={setIsActive}  countPage={3}/>
         </>
 
 
