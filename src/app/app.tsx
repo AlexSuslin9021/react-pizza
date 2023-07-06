@@ -15,7 +15,7 @@ function App() {
             <section className={s.container}>
                 <Header searchValue={searchValue} setSearchValue={setSearchValue}   />
                 <Routes>
-                    <Route path="/" element={<Menu />} />
+                    <Route path="/" element={<Menu searchValue={searchValue} />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/cart-empty" element={<EmptyCart />} />
                     <Route path="/*" element={<NotFound />} />

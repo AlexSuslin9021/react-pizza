@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {Item} from "./common/items";
 import s from './style.module.scss'
 import {SortFilter} from "../common/component/search/SortFilter";
-
 import {PizzaType} from "./api.menu";
 import {LoaderPizza} from "../common/component/loader/loaderPizza";
+import {Pagination} from "../common/component/Pagination/Pagination";
 
 
-export const Menu = () => {
+export const Menu:React.FC<MenuType> = ({searchValue}) => {
     const [loader, setLoader] = useState(false)
     const [activeFilter, setActiveFilter] = useState(0)
     const [allPizza, setAllPizza] = useState<PizzaType[]>([])
@@ -16,6 +16,24 @@ export const Menu = () => {
     const sort = category.sortProperty === 'rating' ? '' : `&sortBy=${category.sortProperty}&order=desc`
     const onClickFilter = (id: number) => { setActiveFilter(id) }
     const onClickSort = (value: any) => { setCategory(value) }
+    const skeleton=[...new Array(allPizza.length)].map((_, i) => <LoaderPizza key={i}/>)
+    const pizza=allPizza.filter((el)=>{
+        if (el.title && searchValue){
+           return   el.title.toLowerCase().includes(searchValue.toLowerCase())
+        }
+    return allPizza
+    }).map((el) => {
+        return <Item key={el.id}
+                     title={el.title}
+                     category={el.category}
+                     price={el.price}
+                     sizes={el.sizes}
+                     id={el.id}
+                     imageUrl={el.imageUrl}
+                     types={el.types}
+                     rating={el.rating}
+        />
+    })
     useEffect(() => {
         setLoader(true)
         fetch(`https://64a3b031c3b509573b56686b.mockapi.io/Items?${filter}${sort}`)
@@ -29,7 +47,7 @@ export const Menu = () => {
                 }, 2000)
             })
 
-    }, [activeFilter, category])
+    }, [activeFilter, category,searchValue])
     return (
         <>
             <SortFilter activeFilter={activeFilter} setActiveFilter={onClickFilter}
@@ -37,24 +55,16 @@ export const Menu = () => {
             />
             <div className={s.menuContainerWrapper}>
                 <div className={s.menuContainer}>
-                    {loader ? [...new Array(allPizza.length)].map((_, i) => <LoaderPizza key={i}/>) :
-                        allPizza.map((el) => {
-                            return <Item key={el.id}
-                                         title={el.title}
-                                         category={el.category}
-                                         price={el.price}
-                                         sizes={el.sizes}
-                                         id={el.id}
-                                         imageUrl={el.imageUrl}
-                                         types={el.types}
-                                         rating={el.rating}
-                            />
-                        })}
+                    {loader ? skeleton :pizza}
                 </div>
             </div>
+            <Pagination countPage={3}/>
         </>
 
 
     );
 };
 
+type MenuType={
+    searchValue:string
+}
