@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Item} from "./common/items";
 import s from './style.module.scss'
-import {SortFilter} from "../common/component/search/SortFilter";
+import {SortFilter} from "../search/SortFilter";
 import {PizzaType} from "./api.menu";
 import {LoaderPizza} from "../common/component/loader/loaderPizza";
 import {Pagination} from "../common/component/Pagination/Pagination";

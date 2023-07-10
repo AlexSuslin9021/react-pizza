@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import s from "../sortFilter.module.scss";
-import {Modal} from "../../modal/modal";
+import {Modal} from "../../common/component/modal/modal";
 
 const SortPizza: React.FC<SortPizzaType> = ({category, setCategory}) => {
     const [open, setOpen] = useState(false)
