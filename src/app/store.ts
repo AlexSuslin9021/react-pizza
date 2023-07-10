@@ -2,11 +2,13 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import {menuReducer} from "../menu/menu.slice";
+import {sort} from "../search/sort.slice";
 
 
 export const store = configureStore({
     reducer: {
-        menuReducer
+        menuReducer,
+        sort,
     },
 });
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

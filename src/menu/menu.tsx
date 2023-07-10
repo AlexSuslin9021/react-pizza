@@ -5,18 +5,24 @@ import {SortFilter} from "../search/SortFilter";
 import {PizzaType} from "./api.menu";
 import {LoaderPizza} from "../common/component/loader/loaderPizza";
 import {Pagination} from "../common/component/Pagination/Pagination";
+import {useAppSelector} from "../app/store";
+import {useAppDispatch} from "../common/hooks/useAppDispatch";
+import {setActiveFilter, setCategory} from "../search/sort.slice";
 
 
 export const Menu:React.FC<MenuType> = ({searchValue}) => {
+    const dispatch=useAppDispatch()
     const [isActive, setIsActive]=useState(1)
     const [loader, setLoader] = useState(false)
-    const [activeFilter, setActiveFilter] = useState(0)
+    const activeFilter =useAppSelector(state => state.sort.activeFilter)
     const [allPizza, setAllPizza] = useState<PizzaType[]>([])
-    const [category, setCategory] = useState({name:'по популярности', sortProperty:'rating'})
+    const category=useAppSelector(state => state.sort.category)
     const filter = activeFilter === 0 ? '' : `category=${activeFilter}`
     const sort = category.sortProperty === 'rating' ? '' : `&sortBy=${category.sortProperty}&order=desc`
-    const onClickFilter = (id: number) => { setActiveFilter(id) }
-    const onClickSort = (value: any) => { setCategory(value) }
+    const onClickFilter = (id: number) => {
+        dispatch(setActiveFilter(id)) }
+    const onClickSort = (value: any) => {
+        dispatch( setCategory(value)) }
     const skeleton=[...new Array(allPizza.length)].map((_, i) => <LoaderPizza key={i}/>)
     const pizza=allPizza.filter((el)=>{
         if (el.title && searchValue){
