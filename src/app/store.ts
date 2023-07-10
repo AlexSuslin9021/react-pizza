@@ -4,9 +4,12 @@ import { TypedUseSelectorHook, useSelector } from "react-redux";
 import {menuReducer} from "../menu/menu.slice";
 import {sort} from "../search/sort.slice";
 
+import {appReducers} from "./app.slice";
+
 
 export const store = configureStore({
     reducer: {
+        appReducers,
         menuReducer,
         sort,
     },
