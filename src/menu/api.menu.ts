@@ -16,3 +16,8 @@ export type PizzaType={
     "category": number,
     "rating": number
 }
+type ParamType={
+    isActive:number
+    filter:string
+    sort:string
+}

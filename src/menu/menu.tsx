@@ -8,7 +8,8 @@ import {Pagination} from "../common/component/Pagination/Pagination";
 import {useAppSelector} from "../app/store";
 import {useAppDispatch} from "../common/hooks/useAppDispatch";
 import {setActiveFilter, setCategory} from "../search/sort.slice";
-import {appReducers, setLoader} from "../app/app.slice";
+import { setLoader} from "../app/app.slice";
+import axios from "axios";
 
 
 export const Menu:React.FC<MenuType> = ({searchValue}) => {
@@ -42,12 +43,9 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
     })
     useEffect(() => {
        dispatch(setLoader(true))
-        fetch(`https://64a3b031c3b509573b56686b.mockapi.io/Items?page=${isActive}&limit=4&${filter}${sort}`)
-            .then((res) => {
-                return res.json()
-            })
-            .then((arr: any) => {
-                setAllPizza(arr)
+        axios.get(`https://64a3b031c3b509573b56686b.mockapi.io/Items?page=${isActive}&limit=4&${filter}${sort}`)
+            .then((res: any) => {
+                setAllPizza(res.data)
                 setTimeout(() => {
                     dispatch(setLoader(false))
                 }, 2000)
