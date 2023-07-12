@@ -39,6 +39,7 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
                      imageUrl={el.imageUrl}
                      types={el.types}
                      rating={el.rating}
+                     count={el.count}
         />
     })
 

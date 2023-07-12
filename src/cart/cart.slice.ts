@@ -11,8 +11,16 @@ const slice = createSlice({
     initialState: initialState,
     reducers: {
         addItemInCart(state, action: { payload: ItemProps }) {
+            const foundItem = state.items.find((i) => i.id === action.payload.id);
             const newItem = action.payload;
-            state.items.push(newItem);
+            if(foundItem){
+                foundItem.count++
+            }else{
+                action.payload.count=1
+                state.items.push(newItem);
+
+            }
+
             state.totalPrice += newItem.price;
         },
         removeItem(state, action: { payload: number }){
@@ -26,14 +34,25 @@ const slice = createSlice({
             state.items = []
         },
         addOnePizza(state, action: { payload: number }){
-
+            const findIndex = state.items.findIndex((i) => i.id === action.payload);
+           if(findIndex!==-1) {
+               state.items[findIndex].count++
+               state.totalPrice+=state.items[findIndex].price
+           }
+           },
+        deleteOnePizza(state, action: { payload: number }){
+            const findIndex = state.items.findIndex((i) => i.id === action.payload);
+            if(findIndex!==-1) {
+                state.items[findIndex].count--
+                state.totalPrice-=state.items[findIndex].price
+            }
         }
     },
 
 })
 
 export const cart = slice.reducer
-export const {addItemInCart,removeItem} = slice.actions
+export const {deleteOnePizza,addItemInCart,removeItem,addOnePizza} = slice.actions
 
 type InitialStateType = {
     totalPrice: number,

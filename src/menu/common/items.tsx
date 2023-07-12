@@ -6,7 +6,7 @@ import OptionPizza from "./optionPizza";
 import {addItemInCart} from "../../cart/cart.slice";
 import {useAppDispatch} from "../../common/hooks/useAppDispatch";
 
-export const  Item:React.FC<ItemProps> = ({id, imageUrl,price,title, types,sizes,category,rating}) => {
+export const  Item:React.FC<ItemProps> = ({id, imageUrl,price,title, types,sizes,category,rating, count}) => {
     const dispatch=useAppDispatch()
     const [countPizza, setCountPizza]= useState<number>(0)
     const onClickHandler=()=>{
@@ -17,7 +17,8 @@ const item={id,
     types,
     sizes,
     category,
-    rating
+    rating,
+    count
 }
         setCountPizza(countPizza+1)
         dispatch(addItemInCart(item))
@@ -43,6 +44,7 @@ export type ItemProps={
     "sizes": number[],
     "price": number,
     "category": number,
-    "rating": number
+    "rating": number,
+    count:number
 
 }
