@@ -41,6 +41,7 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
                      rating={el.rating}
         />
     })
+
     useEffect(() => {
        dispatch(setLoader(true))
         axios.get(`https://64a3b031c3b509573b56686b.mockapi.io/Items?page=${isActive}&limit=4&${filter}${sort}`)

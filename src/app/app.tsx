@@ -10,7 +10,7 @@ import {useDebounce} from "../common/hooks/useDebounce";
 
 function App() {
     const[searchValue,setSearchValue]=useState('');
-   const searchValueDebounce =useDebounce(searchValue,1000)
+   const searchValueDebounce =useDebounce(searchValue,500)
     return (
         <div className={s.mainBlock}>
             <section className={s.container}>
