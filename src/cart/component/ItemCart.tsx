@@ -12,7 +12,7 @@ export const ItemCart = () => {
 
    const onClickDelete= (id:number)=>{
        dispatch(removeItem(id))
-       alert(id)
+
    }
    const onClickPlus=(id:number)=>{
        dispatch(addOnePizza(id))
@@ -25,9 +25,9 @@ export const ItemCart = () => {
           return  <div className={s.itemCart}>
                 <Logo height={'80px'} width={'80px'} src={i.imageUrl} header={i.title} description={'тонкое тесто'}/>
                 <div className={s.count}>
-                    <button onClick={()=>onClickMinus(i.id)} >-</button>
+                    <button disabled={i.count<=0} onClick={()=>onClickMinus(i.id)} >-</button>
                     <span>{i.count}</span>
-                    <button onClick={()=>onClickPlus(i.id)}>+</button>
+                    <button  onClick={()=>onClickPlus(i.id)}>+</button>
                 </div>
                 <div className={s.delete}>
                     <span>{i.price}</span>

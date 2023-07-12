@@ -46,6 +46,9 @@ const slice = createSlice({
                 state.items[findIndex].count--
                 state.totalPrice-=state.items[findIndex].price
             }
+            if(state.items[findIndex].count===0){
+                state.items.splice(findIndex, 1);
+            }
         }
     },
 
