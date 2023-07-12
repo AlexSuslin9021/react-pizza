@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import s from "../style.module.scss";
-import {useAppDispatch} from "../../common/hooks/useAppDispatch";
-import {addItemInCart} from "../../cart/cart.slice";
-import {useAppSelector} from "../../app/store";
-
-export const PriceAndAdd:React.FC<ButtonAddType> = ({name,callback, price}) => {
 
 
-    const [countPizza, setCountPizza]= useState<number>(0)
+export const PriceAndAdd:React.FC<ButtonAddType> = ({name,callback, price, countPizza}) => {
+
+
 
 
     return (
@@ -22,4 +19,5 @@ type ButtonAddType={
     name:string
     callback?:()=>void
     price:number
+    countPizza:number
 }
