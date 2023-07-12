@@ -3,21 +3,37 @@ import s from '../style.module.scss'
 
 import {PriceAndAdd} from "./priceAndAdd";
 import OptionPizza from "./optionPizza";
+import {addItemInCart} from "../../cart/cart.slice";
+import {useAppDispatch} from "../../common/hooks/useAppDispatch";
 
 export const  Item:React.FC<ItemProps> = ({id, imageUrl,price,title, types,sizes,category,rating}) => {
+    const dispatch=useAppDispatch()
+    const onClickHandler=()=>{
+const item={id,
+    imageUrl,
+    price,
+    title,
+    types,
+    sizes,
+    category,
+    rating
+}
+        dispatch(addItemInCart(item))
+
+    }
     return (
 
             <div className={s.item}>
             <div><img style={{width:'250px', height:'250px'}} src={imageUrl} alt="#"/></div>
             <div>{title}</div>
                 <OptionPizza sizes={sizes} types={types}/>
-                <PriceAndAdd price={price} name={'+ Добавить'}/>
+                <PriceAndAdd callback={onClickHandler} price={price} name={'+ Добавить'}/>
             </div>
 
     );
 };
 
-type ItemProps={
+export type ItemProps={
     "id": number,
     "imageUrl": string,
     "title": string,
