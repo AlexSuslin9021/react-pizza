@@ -7,7 +7,8 @@ const initialState: InitialStateType = {
         name: 'по популярности',
         sortProperty: 'rating'
     },
-    searchValue: ''
+    searchValue: '',
+    isActive:1
 }
 const slice = createSlice({
     name: 'menu',
@@ -21,18 +22,22 @@ const slice = createSlice({
         },
         setSearchValue(state, action: { payload: string }) {
             state.searchValue = action.payload
+        },
+        setIsActive(state, action: { payload: number }) {
+            state.isActive = action.payload
         }
     },
 
 })
 
 export const sort = slice.reducer
-export const {setActiveFilter, setCategory,setSearchValue} = slice.actions
+export const {setActiveFilter, setCategory,setSearchValue,setIsActive} = slice.actions
 type InitialStateType = {
     activeFilter: number,
     category: {
         name: string,
         sortProperty: string,
     },
-    searchValue: string
+    searchValue: string,
+    isActive:number
 }

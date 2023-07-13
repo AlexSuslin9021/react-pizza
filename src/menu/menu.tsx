@@ -9,7 +9,7 @@ import {useAppDispatch} from "../common/hooks/useAppDispatch";
 import {getPizza} from "./menu.slice";
 import {allPizzaSelect} from "./selectors";
 import {loaderSelect} from "../app/selectors";
-import {activeFilterSelect, categorySelect, searchValueSelect} from "../search/selectors";
+import {activeFilterSelect, categorySelect, isActiveSelect, searchValueSelect} from "../search/selectors";
 import {useDebounce} from "../common/hooks/useDebounce";
 
 
@@ -21,7 +21,7 @@ export const Menu = () => {
      const activeFilter =useAppSelector(activeFilterSelect)
     const category=useAppSelector(categorySelect)
     const searchValueDebounce =useDebounce(searchValue,500)
-    const [isActive, setIsActive]=useState(1)
+    const isActive=useAppSelector(isActiveSelect)
     const filter = activeFilter === 0 ? '' : `category=${activeFilter}`
     const sort = category.sortProperty === 'rating' ? '' : `&sortBy=${category.sortProperty}&order=desc`
     const skeleton=[...new Array(allPizza.length)].map((_, i) => <LoaderPizza key={i}/>)
@@ -56,7 +56,7 @@ export const Menu = () => {
                     {loader ? skeleton :pizza}
                 </div>
             </div>
-            <Pagination isActive={isActive} setIsActive={setIsActive}  countPage={3}/>
+            <Pagination/>
         </>
 
 

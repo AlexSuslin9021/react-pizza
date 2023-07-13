@@ -1,25 +1,28 @@
 import React  from 'react';
 import s from './pagination.module.scss'
-export const Pagination:React.FC<PaginationType> = ({countPage,setIsActive,isActive}) => {
+import {useAppSelector} from "../../../app/store";
+import {isActiveSelect} from "../../../search/selectors";
+import {useAppDispatch} from "../../hooks/useAppDispatch";
+import {setIsActive} from "../../../search/sort.slice";
+export const Pagination = () => {
+  const dispatch =useAppDispatch()
+    const isActive=useAppSelector(isActiveSelect)
     let count=[]
-    for(let i=1;i <= countPage; i++){
+    for(let i=1;i <= 3; i++){
         count.push(i)
     }
-   const onClickPage=(i:number)=>{ setIsActive(i) }
+   const onClickPage=(i:number)=>{dispatch(setIsActive(i)) }
    const onClickNext=()=>{
-       if(isActive<=3){
-           setIsActive(isActive+1)
-       } else{  setIsActive(3)}
+       const newActive = isActive > 1 ? isActive + 1 : 3;
+       dispatch(setIsActive(newActive));
 
         }
     const onClickBack=()=>{
-        if(isActive>1){
-            setIsActive(isActive-1)
-        }else{
-            setIsActive(1)
+        const newActive = isActive > 1 ? isActive - 1 : 1;
+        dispatch(setIsActive(newActive));
         }
 
-    }
+
     return (
         <div className={s.paginator}>
             <span onClick={onClickBack}  className={s.arrow}>{'<'}</span>
@@ -29,8 +32,3 @@ export const Pagination:React.FC<PaginationType> = ({countPage,setIsActive,isAct
     );
 };
 
-type PaginationType={
-    countPage:number
-    isActive:number
-    setIsActive:(value:number)=>void
-}
