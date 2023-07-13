@@ -2,16 +2,21 @@ import React, {ChangeEvent, useRef} from 'react';
 import s from '../header.module.scss'
 import search from '../../../image/search.svg'
 import close from '../../../image/logo/close.svg'
+import {useAppSelector} from "../../../../app/store";
+import {searchValueSelect} from "../../../../search/selectors";
+import {setSearchValue} from "../../../../search/sort.slice";
+import {useAppDispatch} from "../../../hooks/useAppDispatch";
 
-export const Search:React.FC<SearchType> = ({searchValue,setSearchValue}) => {
+export const Search = () => {
     const inputRef =  useRef<HTMLInputElement>(null)
+  const dispatch= useAppDispatch()
    const onChangeInput=(e:ChangeEvent<HTMLInputElement>)=>{
-       setSearchValue(e.currentTarget.value)
+       dispatch(setSearchValue(e.currentTarget.value))
    }
-
+    const searchValue =useAppSelector(searchValueSelect)
 
    const onClickClose=()=>{
-       setSearchValue('')
+       dispatch(setSearchValue(''))
         inputRef.current?.focus()
    }
     return (
@@ -22,7 +27,3 @@ export const Search:React.FC<SearchType> = ({searchValue,setSearchValue}) => {
         </div>
     );
 };
-type SearchType={
-    searchValue:string
-    setSearchValue:(value:string)=>void
-}

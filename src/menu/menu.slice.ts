@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {PizzaType} from "./api.menu";
-import axios, {AxiosError, AxiosResponse} from "axios";
+import axios from "axios";
 import {setError, setLoader} from "../app/app.slice";
 
 const menuState: PizzaType[] = []

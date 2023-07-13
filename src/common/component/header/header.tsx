@@ -10,7 +10,9 @@ import {useAppSelector} from "../../../app/store";
 import {itemsSelect} from "../../../cart/selectors";
 
 
-const Header:React.FC<HeaderType> = ({searchValue,setSearchValue}) => {
+
+const Header= () => {
+
     const navigate = useNavigate()
     const {totalPrice, items}=useAppSelector(itemsSelect)
     const onClickCart = () => { navigate('/cart') }
@@ -24,7 +26,7 @@ const Header:React.FC<HeaderType> = ({searchValue,setSearchValue}) => {
                 description={'самая вкусная пицца вов вселенной'}
                 header={'REACT PIZZA'}
             />
-            <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <Search />
             <div className={s.cart} onClick={onClickCart}>
                     <span>{totalPrice} p</span>
                    <img src={cart} alt="#"/>
@@ -38,7 +40,3 @@ const Header:React.FC<HeaderType> = ({searchValue,setSearchValue}) => {
 
 export default Header;
 
-type HeaderType={
-    searchValue:string
-    setSearchValue:(value:string)=>void
-}

@@ -10,15 +10,18 @@ import {setActiveFilter, setCategory} from "../search/sort.slice";
 import {getPizza} from "./menu.slice";
 import {allPizzaSelect} from "./selectors";
 import {loaderSelect} from "../app/selectors";
-import {activeFilterSelect, categorySelect} from "../search/selectors";
+import {activeFilterSelect, categorySelect, searchValueSelect} from "../search/selectors";
+import {useDebounce} from "../common/hooks/useDebounce";
 
 
-export const Menu:React.FC<MenuType> = ({searchValue}) => {
+export const Menu = () => {
+    const searchValue=useAppSelector(searchValueSelect)
     const dispatch=useAppDispatch()
     const allPizza=useAppSelector(allPizzaSelect)
     const loader  =useAppSelector(loaderSelect)
     const activeFilter =useAppSelector(activeFilterSelect)
     const category=useAppSelector(categorySelect)
+    const searchValueDebounce =useDebounce(searchValue,500)
     const [isActive, setIsActive]=useState(1)
     const filter = activeFilter === 0 ? '' : `category=${activeFilter}`
     const sort = category.sortProperty === 'rating' ? '' : `&sortBy=${category.sortProperty}&order=desc`
@@ -26,8 +29,8 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
     const onClickSort = (value: any) => { dispatch( setCategory(value)) }
     const skeleton=[...new Array(allPizza.length)].map((_, i) => <LoaderPizza key={i}/>)
     const pizza=allPizza.filter((el)=>{
-        if (el.title && searchValue){
-           return   el.title.toLowerCase().includes(searchValue.toLowerCase())
+        if (el.title && searchValueDebounce){
+           return   el.title.toLowerCase().includes(searchValueDebounce.toLowerCase())
         }
     return allPizza
     }).map((el) => {
@@ -47,6 +50,7 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
     useEffect(() => {
         dispatch(getPizza({isActive,filter,sort}))
     }, [isActive, sort, filter])
+    
     return (
         <>
             <SortFilter activeFilter={activeFilter} setActiveFilter={onClickFilter}
@@ -63,7 +67,3 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
 
     );
 };
-
-type MenuType={
-    searchValue:string
-}
