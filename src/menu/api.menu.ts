@@ -1,8 +1,8 @@
 import {instance} from "../common/api/api";
 
 export const menuApi={
-    getPizza(){
-       return  instance.get<PizzaType[]>('Items')
+    getPizza(arg:ParamType){
+       return  instance.get<PizzaType[]>(`Items?page=${arg.isActive}&limit=4&${arg.filter}${arg.sort}`)
     },
 }
 

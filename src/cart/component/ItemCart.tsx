@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Logo from "../../common/component/logo/Logo";
 
 import s from '../style.module.scss'

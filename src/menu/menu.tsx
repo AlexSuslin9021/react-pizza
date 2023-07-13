@@ -10,14 +10,15 @@ import {useAppDispatch} from "../common/hooks/useAppDispatch";
 import {setActiveFilter, setCategory} from "../search/sort.slice";
 import { setLoader} from "../app/app.slice";
 import axios from "axios";
+import {getPizza} from "./menu.slice";
 
 
 export const Menu:React.FC<MenuType> = ({searchValue}) => {
+    const allPizza=useAppSelector(state => state.menuReducer)
     const dispatch=useAppDispatch()
     const [isActive, setIsActive]=useState(1)
     const loader  =useAppSelector(state => state.appReducers.loader)
     const activeFilter =useAppSelector(state => state.sort.activeFilter)
-    const [allPizza, setAllPizza] = useState<PizzaType[]>([])
     const category=useAppSelector(state => state.sort.category)
     const filter = activeFilter === 0 ? '' : `category=${activeFilter}`
     const sort = category.sortProperty === 'rating' ? '' : `&sortBy=${category.sortProperty}&order=desc`
@@ -44,16 +45,8 @@ export const Menu:React.FC<MenuType> = ({searchValue}) => {
     })
 
     useEffect(() => {
-       dispatch(setLoader(true))
-        axios.get(`https://64a3b031c3b509573b56686b.mockapi.io/Items?page=${isActive}&limit=4&${filter}${sort}`)
-            .then((res: any) => {
-                setAllPizza(res.data)
-                setTimeout(() => {
-                    dispatch(setLoader(false))
-                }, 2000)
-            })
-
-    }, [activeFilter, category,searchValue, isActive])
+        dispatch(getPizza({isActive,filter,sort}))
+    }, [isActive, sort, filter])
     return (
         <>
             <SortFilter activeFilter={activeFilter} setActiveFilter={onClickFilter}
