@@ -4,9 +4,6 @@ import s from "../style.module.scss";
 
 export const PriceAndAdd:React.FC<ButtonAddType> = ({name,callback, price, countPizza}) => {
 
-
-
-
     return (
     <div className={s.price}>
         <span> {price}</span>

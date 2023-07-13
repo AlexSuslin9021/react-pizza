@@ -7,11 +7,12 @@ import Logo from "../logo/Logo";
 import { useNavigate} from "react-router-dom";
 import {Search} from "./component/Search";
 import {useAppSelector} from "../../../app/store";
+import {itemsSelect} from "../../../cart/selectors";
 
 
 const Header:React.FC<HeaderType> = ({searchValue,setSearchValue}) => {
     const navigate = useNavigate()
-    const {totalPrice, items}=useAppSelector(state => state.cart)
+    const {totalPrice, items}=useAppSelector(itemsSelect)
     const onClickCart = () => { navigate('/cart') }
 
     return (

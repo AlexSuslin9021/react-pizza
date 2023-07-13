@@ -5,21 +5,14 @@ import s from '../style.module.scss'
 import {useAppSelector} from "../../app/store";
 import {addOnePizza, deleteOnePizza, removeItem} from "../cart.slice";
 import {useAppDispatch} from "../../common/hooks/useAppDispatch";
+import {itemsSelect} from "../selectors";
 
 export const ItemCart = () => {
    const dispatch=useAppDispatch()
-    const {items}=useAppSelector(state => state.cart)
-
-   const onClickDelete= (id:number)=>{
-       dispatch(removeItem(id))
-
-   }
-   const onClickPlus=(id:number)=>{
-       dispatch(addOnePizza(id))
-   }
-    const onClickMinus=(id:number)=>{
-        dispatch(deleteOnePizza(id))
-    }
+    const {items}=useAppSelector(itemsSelect)
+   const onClickDelete= (id:number)=>{ dispatch(removeItem(id)) }
+   const onClickPlus=(id:number)=>{ dispatch(addOnePizza(id)) }
+    const onClickMinus=(id:number)=>{ dispatch(deleteOnePizza(id)) }
     return (<>
         {items.map((i)=>{
           return  <div className={s.itemCart}>

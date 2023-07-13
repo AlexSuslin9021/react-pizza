@@ -2,24 +2,24 @@ import React, {useEffect, useState} from 'react';
 import {Item} from "./common/items";
 import s from './style.module.scss'
 import {SortFilter} from "../search/SortFilter";
-import {PizzaType} from "./api.menu";
 import {LoaderPizza} from "../common/component/loader/loaderPizza";
 import {Pagination} from "../common/component/Pagination/Pagination";
 import {useAppSelector} from "../app/store";
 import {useAppDispatch} from "../common/hooks/useAppDispatch";
 import {setActiveFilter, setCategory} from "../search/sort.slice";
-import { setLoader} from "../app/app.slice";
-import axios from "axios";
 import {getPizza} from "./menu.slice";
+import {allPizzaSelect} from "./selectors";
+import {loaderSelect} from "../app/selectors";
+import {activeFilterSelect, categorySelect} from "../search/selectors";
 
 
 export const Menu:React.FC<MenuType> = ({searchValue}) => {
-    const allPizza=useAppSelector(state => state.menuReducer)
     const dispatch=useAppDispatch()
+    const allPizza=useAppSelector(allPizzaSelect)
+    const loader  =useAppSelector(loaderSelect)
+    const activeFilter =useAppSelector(activeFilterSelect)
+    const category=useAppSelector(categorySelect)
     const [isActive, setIsActive]=useState(1)
-    const loader  =useAppSelector(state => state.appReducers.loader)
-    const activeFilter =useAppSelector(state => state.sort.activeFilter)
-    const category=useAppSelector(state => state.sort.category)
     const filter = activeFilter === 0 ? '' : `category=${activeFilter}`
     const sort = category.sortProperty === 'rating' ? '' : `&sortBy=${category.sortProperty}&order=desc`
     const onClickFilter = (id: number) => { dispatch(setActiveFilter(id)) }
