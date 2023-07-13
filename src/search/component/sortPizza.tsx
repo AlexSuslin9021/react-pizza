@@ -1,11 +1,18 @@
 import React, {useEffect, useRef, useState} from 'react';
 import s from "../sortFilter.module.scss";
 import {Modal} from "../../common/component/modal/modal";
+import {setCategory} from "../sort.slice";
+import {useAppDispatch} from "../../common/hooks/useAppDispatch";
+import {useAppSelector} from "../../app/store";
+import {categorySelect} from "../selectors";
 
 
-const SortPizza: React.FC<SortPizzaType> = ({category, setCategory}) => {
+const SortPizza= () => {
     const [open, setOpen] = useState(false)
     const modalRef=useRef<HTMLDivElement>(null)
+    const category=useAppSelector(categorySelect)
+    const dispatch = useAppDispatch()
+    const onClickSort = (value: any) => { dispatch( setCategory(value)) }
     useEffect(()=>{
         const handleClick=(event:any)=>{
             if (modalRef.current && !modalRef.current.contains(event.target)){
@@ -19,7 +26,7 @@ const SortPizza: React.FC<SortPizzaType> = ({category, setCategory}) => {
     },[])
     const onClickHandler = () => { setOpen(!open) }
     const onClickChangeSort = (value: any) => {
-        setCategory(value)
+        onClickSort(value)
         setOpen(false)
     }
     return (
@@ -31,7 +38,3 @@ const SortPizza: React.FC<SortPizzaType> = ({category, setCategory}) => {
 };
 
 export default SortPizza;
-type SortPizzaType = {
-    category: any
-    setCategory: any
-}

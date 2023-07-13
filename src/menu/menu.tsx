@@ -6,7 +6,6 @@ import {LoaderPizza} from "../common/component/loader/loaderPizza";
 import {Pagination} from "../common/component/Pagination/Pagination";
 import {useAppSelector} from "../app/store";
 import {useAppDispatch} from "../common/hooks/useAppDispatch";
-import {setActiveFilter, setCategory} from "../search/sort.slice";
 import {getPizza} from "./menu.slice";
 import {allPizzaSelect} from "./selectors";
 import {loaderSelect} from "../app/selectors";
@@ -19,14 +18,12 @@ export const Menu = () => {
     const dispatch=useAppDispatch()
     const allPizza=useAppSelector(allPizzaSelect)
     const loader  =useAppSelector(loaderSelect)
-    const activeFilter =useAppSelector(activeFilterSelect)
+     const activeFilter =useAppSelector(activeFilterSelect)
     const category=useAppSelector(categorySelect)
     const searchValueDebounce =useDebounce(searchValue,500)
     const [isActive, setIsActive]=useState(1)
     const filter = activeFilter === 0 ? '' : `category=${activeFilter}`
     const sort = category.sortProperty === 'rating' ? '' : `&sortBy=${category.sortProperty}&order=desc`
-    const onClickFilter = (id: number) => { dispatch(setActiveFilter(id)) }
-    const onClickSort = (value: any) => { dispatch( setCategory(value)) }
     const skeleton=[...new Array(allPizza.length)].map((_, i) => <LoaderPizza key={i}/>)
     const pizza=allPizza.filter((el)=>{
         if (el.title && searchValueDebounce){
@@ -50,12 +47,10 @@ export const Menu = () => {
     useEffect(() => {
         dispatch(getPizza({isActive,filter,sort}))
     }, [isActive, sort, filter])
-    
+
     return (
         <>
-            <SortFilter activeFilter={activeFilter} setActiveFilter={onClickFilter}
-                    category={category} setCategory={onClickSort}
-            />
+            <SortFilter/>
             <div className={s.menuContainerWrapper}>
                 <div className={s.menuContainer}>
                     {loader ? skeleton :pizza}

@@ -3,20 +3,14 @@ import s from './sortFilter.module.scss'
 import {FilterPizza} from "./component/FilterPizza";
 import SortPizza from "./component/sortPizza";
 
-export const SortFilter:React.FC<SearchType> = ({activeFilter, setActiveFilter, category,setCategory}) => {
+export const SortFilter = () => {
 
     return (
         <div className={s.search}>
-            <FilterPizza activeFilter={activeFilter} setActiveFilter={setActiveFilter}/>
-            <SortPizza category={category} setCategory={setCategory} />
+            <FilterPizza  />
+            <SortPizza   />
         </div>
     );
 };
 
 
-type SearchType={
-    activeFilter:number,
-    setActiveFilter:(value:number)=>void
-    category:any
-    setCategory:any
-}
