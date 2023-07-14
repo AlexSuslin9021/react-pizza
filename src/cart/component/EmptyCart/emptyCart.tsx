@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './emptyCart.module.scss'
 import card from '../../../common/image/shopping-cart.svg'
+import {Link} from "react-router-dom";
 
 export const EmptyCart = () => {
     return (
@@ -9,7 +10,7 @@ export const EmptyCart = () => {
             <p>Вероятней всего, вы не заказывали ещё пиццу.<br/>
                 Для того, чтобы заказать пиццу, перейди на главную страницу.</p>
             <img src={card} alt="#"/>
-            <button> Вернуться назад</button>
+           <Link to={'/'}><button> Вернуться назад</button></Link>
         </div>
     );
 };
