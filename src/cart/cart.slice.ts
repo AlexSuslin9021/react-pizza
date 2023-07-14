@@ -29,8 +29,9 @@ const slice = createSlice({
                 state.items.splice(index, 1);
             }
         },
-        clearCart(state, action: { payload: ItemProps }) {
+        clearCart(state) {
             state.items = []
+            state.totalPrice=0
         },
         addOnePizza(state, action: { payload: number }){
             const findIndex = state.items.findIndex((i) => i.id === action.payload);
@@ -54,7 +55,7 @@ const slice = createSlice({
 })
 
 export const cart = slice.reducer
-export const {deleteOnePizza,addItemInCart,removeItem,addOnePizza} = slice.actions
+export const {deleteOnePizza,addItemInCart,removeItem,addOnePizza,clearCart} = slice.actions
 
 type InitialStateType = {
     totalPrice: number,

@@ -7,7 +7,7 @@ export const PriceAndAdd:React.FC<ButtonAddType> = ({name,callback, price, count
     return (
     <div className={s.price}>
         <span> {price}</span>
-        <button onClick={callback}> + Добавить <i>{countPizza>0 && countPizza }</i> </button>
+        <button onClick={callback}> + Добавить <span>{countPizza>0 && countPizza }</span> </button>
     </div>
     );
 };
