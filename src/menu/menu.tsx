@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
 import {Item} from "./common/items";
 import s from './style.module.scss'
-import {SortFilter} from "../search/SortFilter";
 import {LoaderPizza} from "../common/component/loader/loaderPizza";
-import {Pagination} from "../common/component/Pagination/Pagination";
 import {useAppSelector} from "../app/store";
 import {useAppDispatch} from "../common/hooks/useAppDispatch";
 import {getPizza} from "./menu.slice";
@@ -11,9 +9,12 @@ import {allPizzaSelect} from "./selectors";
 import {loaderSelect} from "../app/selectors";
 import {activeFilterSelect, categorySelect, isActiveSelect, searchValueSelect} from "../search/selectors";
 import {useDebounce} from "../common/hooks/useDebounce";
+import {SortFilter} from "../search/SortFilter";
+import {Pagination} from "../common/component/Pagination/Pagination";
 
 
 export const Menu = () => {
+    console.log('menu')
     const searchValue=useAppSelector(searchValueSelect)
     const dispatch=useAppDispatch()
     const allPizza=useAppSelector(allPizzaSelect)

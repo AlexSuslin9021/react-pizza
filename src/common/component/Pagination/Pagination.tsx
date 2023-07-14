@@ -1,10 +1,10 @@
-import React  from 'react';
+import React, {memo} from 'react';
 import s from './pagination.module.scss'
 import {useAppSelector} from "../../../app/store";
 import {isActiveSelect} from "../../../search/selectors";
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 import {setIsActive} from "../../../search/sort.slice";
-export const Pagination = () => {
+export const Pagination = memo( () => {
   const dispatch =useAppDispatch()
     const isActive=useAppSelector(isActiveSelect)
     let count=[]
@@ -30,5 +30,5 @@ export const Pagination = () => {
             <span onClick={onClickNext} className={s.arrow}>{'>'}</span>
         </div>
     );
-};
+});
 

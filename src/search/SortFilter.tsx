@@ -1,16 +1,17 @@
-import React from 'react';
-import s from './sortFilter.module.scss'
+import React, {memo} from 'react';
+import {SortPizza} from "../menu/common/sortPizza";
 import {FilterPizza} from "./component/FilterPizza";
-import SortPizza from "./component/sortPizza";
+import s from './sortFilter.module.scss'
 
-export const SortFilter = () => {
-
+ export const SortFilter = memo( () => {
+    console.log('SortFilter');
     return (
         <div className={s.search}>
-            <FilterPizza  />
-            <SortPizza   />
+            <FilterPizza />
+            <SortPizza />
         </div>
     );
-};
+});
+
 
 

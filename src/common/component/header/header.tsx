@@ -26,7 +26,7 @@ const Header = () => {
                 description={'самая вкусная пицца вов вселенной'}
                 header={'REACT PIZZA'}
             />
-            {path.pathname==='/' &&  <Search/>}
+           <Search/>
             <div className={s.cart} onClick={onClickCart}>
                 <span>{totalPrice} p</span>
                 <img src={cart} alt="#"/>
