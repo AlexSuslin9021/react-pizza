@@ -4,19 +4,19 @@ import cart from '../../image/logo/Rectangle 4.svg'
 import line from '../../image/logo/iconfinder_shopping-cart_2561279 1.svg'
 import s from './header.module.scss'
 import Logo from "../logo/Logo";
-import { useNavigate} from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import {Search} from "./component/Search";
 import {useAppSelector} from "../../../app/store";
 import {itemsSelect} from "../../../cart/selectors";
 
-
-
-const Header= () => {
+const Header = () => {
 
     const navigate = useNavigate()
-    const {totalPrice, items}=useAppSelector(itemsSelect)
-    const onClickCart = () => { navigate('/cart') }
-
+    const {totalPrice, items} = useAppSelector(itemsSelect)
+    const onClickCart = () => {
+        navigate('/cart')
+    }
+    const path = useLocation()
     return (
         <header className={s.header}>
             <Logo
@@ -26,11 +26,11 @@ const Header= () => {
                 description={'самая вкусная пицца вов вселенной'}
                 header={'REACT PIZZA'}
             />
-            <Search />
+            {path.pathname==='/' &&  <Search/>}
             <div className={s.cart} onClick={onClickCart}>
-                    <span>{totalPrice} p</span>
-                   <img src={cart} alt="#"/>
-                    <img src={line} alt="#"/>
+                <span>{totalPrice} p</span>
+                <img src={cart} alt="#"/>
+                <img src={line} alt="#"/>
                 <span>{items.length}</span>
 
             </div>

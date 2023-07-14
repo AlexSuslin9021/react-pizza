@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Item} from "./common/items";
 import s from './style.module.scss'
 import {SortFilter} from "../search/SortFilter";
@@ -46,7 +46,7 @@ export const Menu = () => {
 
     useEffect(() => {
         dispatch(getPizza({isActive,filter,sort}))
-    }, [isActive, sort, filter])
+    }, [dispatch,isActive, sort, filter])
 
     return (
         <>

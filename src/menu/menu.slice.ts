@@ -11,8 +11,11 @@ const slice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getPizza.fulfilled, (state, action) => {
             return action.payload
-        })
-    }
+        });
+
+    },
+
+
 })
 
 export const getPizza = createAsyncThunk("menu/getPizza", async (arg: {
@@ -34,5 +37,6 @@ export const getPizza = createAsyncThunk("menu/getPizza", async (arg: {
     }
 
 });
+
 
 export const menuReducer = slice.reducer

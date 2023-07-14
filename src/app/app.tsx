@@ -6,6 +6,7 @@ import Header from '../common/component/header/header';
 import { Cart } from '../cart/cart';
 import {EmptyCart} from "../cart/component/EmptyCart/emptyCart";
 import {NotFound} from "../common/component/notFound/notFound";
+import {OnePizza} from "../onePizza/onePizza";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Menu />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/pizza/:id" element={<OnePizza />} />
                     <Route path="/cart-empty" element={<EmptyCart />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>

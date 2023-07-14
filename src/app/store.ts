@@ -6,6 +6,7 @@ import {sort} from "../search/sort.slice";
 
 import {appReducers} from "./app.slice";
 import {cart} from "../cart/cart.slice";
+import {pizza} from "../onePizza/pizza.slice";
 
 
 export const store = configureStore({
@@ -14,6 +15,7 @@ export const store = configureStore({
         menuReducer,
         sort,
         cart,
+        pizza,
     },
 });
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
