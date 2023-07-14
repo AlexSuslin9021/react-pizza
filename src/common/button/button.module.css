@@ -1,0 +1,21 @@
+.buttonWhite{
+    /*width:190px;*/
+    /*height: 45px;*/
+    border-radius: 30px;
+    border: 1px solid #D3D3D3;
+    color: #D3D3D3;
+   background: white;
+    padding: 5px 10px;
+
+}
+
+.buttonOrange{
+    /*width:190px;*/
+    /*height: 45px;*/
+    border-radius: 30px;
+    border: none;
+    color: white;
+    background: #fe5f1e;
+    padding: 10px 15px;
+
+}
