@@ -27,7 +27,7 @@ const slice = createSlice({
 
 
 })
-export const getOnePizza = createAsyncThunk("pizza/getOnePizza", async (id:number
+export const getOnePizza = createAsyncThunk<PizzaType, number>("pizza/getOnePizza", async (id:number
     , thunkAPI) => {
     const {dispatch} = thunkAPI
     try {

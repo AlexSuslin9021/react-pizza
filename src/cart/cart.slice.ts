@@ -1,7 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {ItemProps} from "../menu/common/items";
 
-
 const initialState: InitialStateType = {
     totalPrice: 0,
     items: []
