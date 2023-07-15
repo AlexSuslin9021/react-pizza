@@ -1,10 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {ItemProps} from "../menu/common/items";
 
+
 const initialState: InitialStateType = {
     totalPrice: 0,
     items: []
 }
+
 const slice = createSlice({
     name: 'cart',
     initialState: initialState,
@@ -39,6 +41,7 @@ const slice = createSlice({
                state.items[findIndex].count++
                state.totalPrice+=state.items[findIndex].price
            }
+
            },
         deleteOnePizza(state, action: { payload: number }){
             const findIndex = state.items.findIndex((i) => i.id === action.payload);
