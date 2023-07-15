@@ -15,7 +15,7 @@ export const ItemCart = () => {
     const onClickMinus=(id:number)=>{ dispatch(deleteOnePizza(id)) }
     return (<>
         {items.map((i)=>{
-          return  <div className={s.itemCart}>
+          return  <div key={i.id} className={s.itemCart}>
                 <Logo height={'80px'} width={'80px'} src={i.imageUrl} header={i.title} description={'тонкое тесто'}/>
                 <div className={s.count}>
                     <button disabled={i.count<=0} onClick={()=>onClickMinus(i.id)} >-</button>
