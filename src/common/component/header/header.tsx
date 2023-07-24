@@ -23,7 +23,7 @@ const Header = () => {
                 width={'60px'}
                 height={'60px'}
                 src={logo}
-                description={'самая вкусная пицца вов вселенной'}
+                description={'самая вкусная пицца во в вселенной'}
                 header={'REACT PIZZA'}
             />
            <Search/>

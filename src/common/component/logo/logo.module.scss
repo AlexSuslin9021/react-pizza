@@ -3,7 +3,7 @@
   display: flex;
   justify-content: flex-start;
   cursor: pointer;
-  flex-wrap:wrap ;
+  width: 50%;
 
   img {
     margin-right: 10px;
@@ -14,4 +14,15 @@
   h4, p {
     margin: 0;
   }
+}
+
+@media screen and (max-width: 430px) {
+  .logo {
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    width: 200px;
+
+  }
+
 }
