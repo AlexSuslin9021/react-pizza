@@ -21,3 +21,10 @@ margin: 50px 0;
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+  body {
+
+  padding: 0 15px;
+  }
+}
